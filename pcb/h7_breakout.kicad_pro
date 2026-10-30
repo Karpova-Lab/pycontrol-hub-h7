@@ -148,7 +148,7 @@
         "max_error": 0.005,
         "min_clearance": 0.0,
         "min_connection": 0.0,
-        "min_copper_edge_clearance": 0.5,
+        "min_copper_edge_clearance": 0.4,
         "min_groove_width": 0.0,
         "min_hole_clearance": 0.25,
         "min_hole_to_hole": 0.25,
@@ -218,7 +218,9 @@
         0.4318,
         0.508,
         0.6604,
-        0.8636
+        0.8636,
+        1.016,
+        2.032
       ],
       "tuning_pattern_settings": {
         "diff_pair_defaults": {
@@ -261,7 +263,7 @@
       "internal_id": "",
       "mfg": "",
       "mpn": "",
-      "sch_revision": "0.9"
+      "sch_revision": "0.10"
     },
     "layer_pairs": [],
     "layer_presets": [],
@@ -547,7 +549,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "h7_breakout_0_9",
+      "plot": "h7_breakout_0_10",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "h7_breakout.step",
@@ -736,7 +738,7 @@
         "uuid": "7d12653b-8acc-4705-a19c-4935126d3016"
       }
     ],
-    "used_designators": "TP1,FID1-3,S1-5,JP1-4,R1-55,H1-4,J1-16,SW1-3,C1-13,U1-21,Y1-2,#PWR1-60,D1-6,DRA1-2",
+    "used_designators": "TP1,FID1-3,S1-4,J1-16,R1-61,H1-4,SW1-3,U1-20,C1-22,Y1-2,#PWR1-54,D1-8,Q1-2,DRA1-2",
     "variants": []
   },
   "sheets": [
