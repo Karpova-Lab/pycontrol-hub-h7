@@ -1,3 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+      <url>
+        <loc>https://karpova-lab.github.io/pycontrol-hub-h7/</loc>
+      </url>
+      <url>
+        <loc>https://karpova-lab.github.io/pycontrol-hub-h7/building/</loc>
+      </url>
+      <url>
+        <loc>https://karpova-lab.github.io/pycontrol-hub-h7/using/</loc>
+      </url>
 </urlset>

@@ -8,7 +8,7 @@ icon: lucide/drill
   <model-viewer
     id="h7-board-model"
     src="building/v10-assembled.glb"
-    alt="pyControl H7 Breakout PCB assembly and enclosure with removable panels"
+    alt="pyControl Hub H7 PCB assembly and enclosure with removable panels"
     camera-controls
     touch-action="pan-y"
     camera-orbit="35deg 55deg 85%"

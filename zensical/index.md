@@ -7,8 +7,8 @@ icon: lucide/binoculars
 This breakout board is a high-performance hardware hub for the [pyControl](https://pycontrol.readthedocs.io/en/latest/) project. 
 Driven by the cross-platform open-source GUI software, it is able to interface with a variety of peripheral [devices](https://pycontrol.readthedocs.io/en/latest/user-guide/hardware/#devices) to record inputs and control outputs for behavioral experiments.
 
-[![pyControl H7 Breatkout PCB](index/top_rendering.png)](index/top_rendering.png){ target="_blank" }
-[![pyControl H7 Breakout with enclosure](index/iso.png)](index/iso.png){ target="_blank" }
+[![pyControl Hub H7 PCB](index/top_rendering.png)](index/top_rendering.png){ target="_blank" }
+[![pyControl Hub H7 with enclosure](index/iso.png)](index/iso.png){ target="_blank" }
 [![front](index/front.png)](index/front.png){ target="_blank" }
 [![back](index/back.png)](index/back.png){ target="_blank" }
 [![bottom](index/bottom.png)](index/bottom.png){ target="_blank" }

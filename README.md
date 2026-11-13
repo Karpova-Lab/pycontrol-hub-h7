@@ -1,5 +1,8 @@
-> !!! WARNING !!! This is a work in progress. Please see the [discussion](https://github.com/orgs/pyControl/discussions/171) to see updates and provide feedback.
-# pyControl H7 Breakout
+View documentation at https://karpova-lab.github.io/pycontrol-hub-h7/
+
+Original discussion found at https://github.com/orgs/pyControl/discussions/171
+
+# pyControl Hub H7
 A pyControl breakout board using an [STM32H743VIT6](https://www.digikey.com/short/7n8h83wr) microcontroller.
 
 - 480 MHz Cortex-M7, 800 KB SRAM, 2 MB external QSPI flash
@@ -8,6 +11,7 @@ A pyControl breakout board using an [STM32H743VIT6](https://www.digikey.com/shor
 - 2 BNC connectors
 - 1 [QWIIC](https://www.sparkfun.com/qwiic) / [Stemma-QT](https://learn.adafruit.com/introducing-adafruit-stemma-qt/what-is-stemma-qt) / [Modulino](https://store.arduino.cc/collections/modulino) connector
 - USB type C connector with ESD protection
+- DC barrel jack input with reverse polarity protection
 - On/off toggle switch, 4 user buttons, reset button, and a DFU button for bootloader access
 - Power and USB indicator LEDs, 4 user controllable LEDs (red, yellow, green and blue)
 - Metal enclosure 
