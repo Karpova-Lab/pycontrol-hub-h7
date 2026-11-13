@@ -40,11 +40,11 @@ icon: lucide/drill
 
 [![rendered top view of PCB](building/pcb/render.png)](building/pcb/render.png){ target="_blank" }
 
-!!! tip "Ordering PCBs"
+<!-- !!! tip "Ordering PCBs"
     Order the PCB from [OSH Park](https://oshpark.com/) or [Aisler](https://aisler.net/), or manually upload the gerber files to your preferred PCB manufacturer.
 
 [:material-file-download: Download gerber files](h7_breakout_0_2.zip){ .md-button } 
-[:material-cart: Order from OSH Park](){ .md-button } [:material-cart: Order from Aisler](){ .md-button } 
+[:material-cart: Order from OSH Park](){ .md-button } [:material-cart: Order from Aisler](){ .md-button }  -->
 
 
 <div class="grid cards" markdown>
