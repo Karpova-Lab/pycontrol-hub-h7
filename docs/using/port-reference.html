@@ -1,0 +1,985 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="RJ45 behavior port pin reference for the pyControl H7 Breakout 0.8.">
+  <title>Behavior port reference · pyControl H7 Breakout</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --canvas: #f3f5f2;
+      --surface: #ffffff;
+      --surface-raised: #fbfcfa;
+      --ink: #172421;
+      --muted: #60706b;
+      --line: #dce3df;
+      --line-strong: #c5d0ca;
+      --accent: #087f72;
+      --accent-deep: #075e56;
+      --accent-soft: #dff3ee;
+      --dio: #087f72;
+      --dio-soft: #e2f4f0;
+      --power: #bd5b16;
+      --power-soft: #fff0e5;
+      --warning: #a43f3f;
+      --warning-soft: #fff0ef;
+      --shadow: 0 18px 50px rgba(28, 48, 42, 0.09);
+      --radius: 18px;
+      --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+      --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+        --canvas: #101715;
+        --surface: #18211f;
+        --surface-raised: #1c2724;
+        --ink: #edf5f2;
+        --muted: #a7b7b1;
+        --line: #30413c;
+        --line-strong: #40534d;
+        --accent: #5bd0bf;
+        --accent-deep: #8be2d5;
+        --accent-soft: #173d37;
+        --dio: #70d8c9;
+        --dio-soft: #183c37;
+        --power: #ffac70;
+        --power-soft: #492c1d;
+        --warning: #ffaaa4;
+        --warning-soft: #482523;
+        --shadow: 0 18px 60px rgba(0, 0, 0, 0.24);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 8% -5%, color-mix(in srgb, var(--accent-soft) 75%, transparent), transparent 32rem),
+        var(--canvas);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .page {
+      width: min(1500px, 100%);
+      margin: 0 auto;
+      padding: 28px clamp(16px, 3vw, 48px) 64px;
+    }
+
+    .eyebrow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      align-items: center;
+      margin-bottom: 14px;
+      color: var(--accent-deep);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow .revision {
+      padding: 3px 8px;
+      border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line));
+      border-radius: 999px;
+      background: var(--accent-soft);
+      letter-spacing: 0.04em;
+    }
+
+    h1 {
+      max-width: 900px;
+      margin: 0;
+      font-size: clamp(2.1rem, 5vw, 4.6rem);
+      font-weight: 760;
+      letter-spacing: -0.055em;
+      line-height: 0.98;
+    }
+
+    .lede {
+      max-width: 780px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 32px 0;
+    }
+
+    .summary-card {
+      min-height: 112px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: color-mix(in srgb, var(--surface) 94%, transparent);
+    }
+
+    .summary-card strong {
+      display: block;
+      font-size: 1.75rem;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+    }
+
+    .summary-card span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin: 0 -8px 14px;
+      padding: 12px 8px;
+      background: color-mix(in srgb, var(--canvas) 89%, transparent);
+      backdrop-filter: blur(16px);
+    }
+
+    .search {
+      position: relative;
+      flex: 1 1 260px;
+      max-width: 380px;
+    }
+
+    .search svg {
+      position: absolute;
+      top: 50%;
+      left: 14px;
+      width: 17px;
+      height: 17px;
+      color: var(--muted);
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .search input {
+      width: 100%;
+      min-height: 44px;
+      padding: 9px 14px 9px 42px;
+      border: 1px solid var(--line-strong);
+      border-radius: 12px;
+      outline: none;
+      background: var(--surface);
+      color: var(--ink);
+    }
+
+    .search input:focus-visible {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+    }
+
+    .filters {
+      display: flex;
+      gap: 7px;
+      overflow-x: auto;
+      padding: 2px;
+      scrollbar-width: thin;
+    }
+
+    .filter {
+      flex: 0 0 auto;
+      min-height: 40px;
+      padding: 7px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .filter:hover {
+      border-color: var(--line-strong);
+      color: var(--ink);
+    }
+
+    .filter[aria-pressed="true"] {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .table-shell {
+      position: relative;
+      overflow: auto;
+      max-height: min(74vh, 820px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      scrollbar-color: var(--line-strong) transparent;
+    }
+
+    table {
+      width: 100%;
+      min-width: 1060px;
+      border-collapse: separate;
+      border-spacing: 0;
+      text-align: left;
+    }
+
+    th,
+    td {
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    th:last-child,
+    td:last-child {
+      border-right: 0;
+    }
+
+    tbody tr:last-child td,
+    tbody tr:last-child th {
+      border-bottom: 0;
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      z-index: 4;
+      min-width: 178px;
+      padding: 15px 15px 14px;
+      background: var(--surface-raised);
+      box-shadow: 0 1px 0 var(--line);
+    }
+
+    thead th:first-child {
+      left: 0;
+      z-index: 6;
+      min-width: 105px;
+    }
+
+    .pin-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 24px;
+      height: 24px;
+      margin-right: 7px;
+      border-radius: 7px;
+      background: var(--ink);
+      color: var(--surface);
+      font-family: var(--mono);
+      font-size: 0.76rem;
+    }
+
+    .column-function {
+      display: inline;
+      color: var(--ink);
+      font-size: 0.88rem;
+      font-weight: 800;
+    }
+
+    thead small {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    tbody th {
+      position: sticky;
+      left: 0;
+      z-index: 3;
+      width: 105px;
+      padding: 18px 14px;
+      background: var(--surface);
+    }
+
+    tbody tr:nth-child(even) th,
+    tbody tr:nth-child(even) td {
+      background: color-mix(in srgb, var(--surface-raised) 74%, var(--surface));
+    }
+
+    .port-label {
+      display: block;
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .port-number {
+      display: block;
+      margin-top: 2px;
+      color: var(--accent-deep);
+      font-family: var(--mono);
+      font-size: 1.45rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    td {
+      height: 106px;
+      padding: 16px 15px;
+    }
+
+    .cell-top {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .function {
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.035em;
+    }
+
+    .function.dio {
+      color: var(--dio);
+    }
+
+    .function.power {
+      color: var(--power);
+    }
+
+    .mcu {
+      display: inline-block;
+      padding: 3px 7px;
+      border: 1px solid var(--line-strong);
+      border-radius: 7px;
+      background: var(--surface);
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 0.79rem;
+      font-weight: 750;
+      letter-spacing: 0.02em;
+    }
+
+    .capabilities {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 11px;
+    }
+
+    .capability {
+      padding: 3px 7px;
+      border-radius: 6px;
+      background: var(--accent-soft);
+      color: var(--accent-deep);
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      font-weight: 720;
+      white-space: nowrap;
+    }
+
+    .empty {
+      padding: 28px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .mobile-list {
+      display: none;
+    }
+
+    .notes-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .panel {
+      padding: clamp(18px, 3vw, 28px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .panel h2 {
+      margin: 0 0 8px;
+      font-size: 1.08rem;
+      letter-spacing: -0.02em;
+    }
+
+    .panel p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .pinout {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .pinout-item {
+      padding: 10px;
+      border-radius: 11px;
+      background: var(--surface-raised);
+    }
+
+    .pinout-item code {
+      display: block;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+    }
+
+    .pinout-item strong {
+      display: block;
+      margin-top: 3px;
+      font-size: 0.82rem;
+    }
+
+    .pinout-item.dio {
+      box-shadow: inset 0 3px 0 var(--dio);
+    }
+
+    .pinout-item.power {
+      box-shadow: inset 0 3px 0 var(--power);
+    }
+
+    details {
+      margin-top: 16px;
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+    }
+
+    summary {
+      color: var(--warning);
+      cursor: pointer;
+      font-size: 0.86rem;
+      font-weight: 760;
+    }
+
+    .review-list {
+      margin: 12px 0 0;
+      padding-left: 19px;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .review-list li + li {
+      margin-top: 8px;
+    }
+
+    code {
+      font-family: var(--mono);
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 15px;
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .legend span {
+      display: inline-flex;
+      gap: 7px;
+      align-items: center;
+    }
+
+    .swatch {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--dio);
+    }
+
+    .swatch.power {
+      background: var(--power);
+    }
+
+    footer {
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: 0.77rem;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .toolbar {
+        flex-wrap: wrap;
+      }
+
+      .search {
+        max-width: none;
+      }
+
+      .filters {
+        flex: 1 0 100%;
+      }
+
+      .notes-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        padding-top: 20px;
+      }
+
+      h1 {
+        max-width: 13ch;
+      }
+
+      .summary-card {
+        min-height: 96px;
+        padding: 14px;
+      }
+
+      .summary-card strong {
+        font-size: 1.45rem;
+      }
+
+      .table-shell {
+        display: none;
+      }
+
+      .mobile-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .port-card {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: var(--surface);
+        box-shadow: 0 10px 30px rgba(28, 48, 42, 0.06);
+      }
+
+      .port-card header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .port-card h2 {
+        margin: 0;
+        font-size: 1.08rem;
+      }
+
+      .port-card header code {
+        color: var(--muted);
+        font-size: 0.72rem;
+      }
+
+      .mobile-slots {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .mobile-slot {
+        min-height: 108px;
+        padding: 13px;
+        border-right: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .mobile-slot:nth-child(even) {
+        border-right: 0;
+      }
+
+      .mobile-slot:last-child {
+        grid-column: 1 / -1;
+        border-right: 0;
+        border-bottom: 0;
+      }
+
+      .mobile-slot:nth-last-child(2) {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .mobile-slot .rj45 {
+        display: block;
+        margin-bottom: 7px;
+        color: var(--muted);
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .pinout {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .pinout-item:last-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .summary {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .summary-card span {
+        font-size: 0.78rem;
+      }
+
+      .mobile-slots {
+        grid-template-columns: 1fr;
+      }
+
+      .mobile-slot,
+      .mobile-slot:nth-child(even),
+      .mobile-slot:last-child {
+        grid-column: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .mobile-slot:last-child {
+        border-bottom: 0;
+      }
+    }
+
+    @media print {
+      :root {
+        color-scheme: light;
+      }
+
+      body {
+        background: #fff;
+      }
+
+      .page {
+        width: 100%;
+        padding: 0;
+      }
+
+      .toolbar,
+      .mobile-list,
+      details,
+      footer {
+        display: none !important;
+      }
+
+      .table-shell {
+        overflow: visible;
+        max-height: none;
+        box-shadow: none;
+      }
+
+      table {
+        min-width: 0;
+        font-size: 8pt;
+      }
+
+      thead th,
+      tbody th {
+        position: static;
+      }
+
+      td {
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="eyebrow">
+      <span>pyControl H7 Breakout</span>
+      <span class="revision">hardware 0.8</span>
+    </div>
+    <h1>Behavior port reference</h1>
+    <p class="lede">
+      A searchable view of every programmable signal on the ten RJ45 behavior ports.
+      MCU assignments follow the board schematic; interface badges show useful peripheral functions.
+    </p>
+
+    <section class="summary" aria-label="Port summary">
+      <div class="summary-card"><strong>10</strong><span>RJ45 behavior ports</span></div>
+      <div class="summary-card"><strong>50</strong><span>programmable signal positions</span></div>
+      <div class="summary-card"><strong>7</strong><span>standard UART port pairs</span></div>
+      <div class="summary-card"><strong>2 + 2 + 1</strong><span>I²C · SPI · CAN buses</span></div>
+    </section>
+
+    <section aria-labelledby="reference-heading">
+      <h2 id="reference-heading" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">Port assignments</h2>
+      <div class="toolbar">
+        <label class="search">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="m20 20-4-4"></path>
+          </svg>
+          <span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0)">Search ports</span>
+          <input id="search" type="search" placeholder="Search pin, function, or interface…" autocomplete="off">
+        </label>
+        <div class="filters" aria-label="Filter by interface">
+          <button class="filter" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter" type="button" data-filter="UART" aria-pressed="false">UART</button>
+          <button class="filter" type="button" data-filter="I2C" aria-pressed="false">I²C</button>
+          <button class="filter" type="button" data-filter="SPI" aria-pressed="false">SPI</button>
+          <button class="filter" type="button" data-filter="CAN" aria-pressed="false">CAN</button>
+          <button class="filter" type="button" data-filter="DAC" aria-pressed="false">DAC</button>
+          <button class="filter" type="button" data-filter="Encoder" aria-pressed="false">Encoder</button>
+        </div>
+      </div>
+
+      <div class="table-shell">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Port</th>
+              <th scope="col"><span class="pin-number">1</span><span class="column-function">DIO_A</span><small>digital I/O</small></th>
+              <th scope="col"><span class="pin-number">3</span><span class="column-function">POW_A</span><small>power driver</small></th>
+              <th scope="col"><span class="pin-number">4</span><span class="column-function">DIO_B</span><small>digital I/O</small></th>
+              <th scope="col"><span class="pin-number">5</span><span class="column-function">DIO_C / POW_C</span><small>varies by port</small></th>
+              <th scope="col"><span class="pin-number">7</span><span class="column-function">POW_B</span><small>power driver</small></th>
+            </tr>
+          </thead>
+          <tbody id="table-body"></tbody>
+        </table>
+      </div>
+      <div id="mobile-list" class="mobile-list"></div>
+      <p id="empty" class="empty" hidden>No ports match this search.</p>
+    </section>
+
+    <section class="notes-grid">
+      <article class="panel">
+        <h2>Standard signal positions</h2>
+        <p>The same five RJ45 positions are used on every port. Port 2 and Port 3 use pin 5 for a third power driver; all other ports use it for digital I/O.</p>
+        <div class="pinout" aria-label="Standard RJ45 signal positions">
+          <div class="pinout-item dio"><code>pin 1</code><strong>DIO_A</strong></div>
+          <div class="pinout-item power"><code>pin 3</code><strong>POW_A</strong></div>
+          <div class="pinout-item dio"><code>pin 4</code><strong>DIO_B</strong></div>
+          <div class="pinout-item dio"><code>pin 5</code><strong>DIO_C / POW_C</strong></div>
+          <div class="pinout-item power"><code>pin 7</code><strong>POW_B</strong></div>
+        </div>
+        <div class="legend">
+          <span><i class="swatch"></i> digital signal</span>
+          <span><i class="swatch power"></i> power driver</span>
+        </div>
+      </article>
+
+      <aside class="panel">
+        <h2>Source check</h2>
+        <p>
+          All 50 physical MCU pin assignments now agree across schematic revision 0.8,
+          the spreadsheet, and the firmware profile.
+        </p>
+        <details>
+          <summary>Interface metadata notes</summary>
+          <ul class="review-list">
+            <li><strong>Port 2 UART4:</strong> configured by firmware and identified in the schematic; the spreadsheet currently lists only the encoder functions on these pins.</li>
+            <li><strong>SPI and CAN:</strong> these are hardware capabilities in the schematic/spreadsheet, but the current firmware <code>Port</code> class has no SPI or CAN metadata fields.</li>
+          </ul>
+        </details>
+      </aside>
+    </section>
+
+    <footer>Draft reference · verified against h7_breakout.kicad_sch, port_table.xlsx, and breakout_H7_08.py</footer>
+  </main>
+
+  <script>
+    const slots = [
+      { key: "dioA", pin: 1 },
+      { key: "powA", pin: 3 },
+      { key: "dioB", pin: 4 },
+      { key: "center", pin: 5 },
+      { key: "powB", pin: 7 }
+    ];
+
+    const ports = [
+      {
+        number: 1,
+        dioA: { fn: "DIO_A", mcu: "B10", caps: ["UART3 TX", "I2C2 SCL"] },
+        powA: { fn: "POW_A", mcu: "C2" },
+        dioB: { fn: "DIO_B", mcu: "B11", caps: ["UART3 RX", "I2C2 SDA"] },
+        center: { fn: "DIO_C", mcu: "A4", caps: ["DAC1"] },
+        powB: { fn: "POW_B", mcu: "C3" }
+      },
+      {
+        number: 2,
+        dioA: { fn: "DIO_A", mcu: "A0", caps: ["UART4 TX", "Encoder A"] },
+        powA: { fn: "POW_A", mcu: "E5" },
+        dioB: { fn: "DIO_B", mcu: "A1", caps: ["UART4 RX", "Encoder B"] },
+        center: { fn: "POW_C", mcu: "D3" },
+        powB: { fn: "POW_B", mcu: "E6" }
+      },
+      {
+        number: 3,
+        dioA: { fn: "DIO_A", mcu: "B13", caps: ["UART5 TX"] },
+        powA: { fn: "POW_A", mcu: "E1" },
+        dioB: { fn: "DIO_B", mcu: "B12", caps: ["UART5 RX"] },
+        center: { fn: "POW_C", mcu: "B0" },
+        powB: { fn: "POW_B", mcu: "E4" }
+      },
+      {
+        number: 4,
+        dioA: { fn: "DIO_A", mcu: "C6", caps: ["UART6 TX"] },
+        powA: { fn: "POW_A", mcu: "C0" },
+        dioB: { fn: "DIO_B", mcu: "C7", caps: ["UART6 RX"] },
+        center: { fn: "DIO_C", mcu: "B14" },
+        powB: { fn: "POW_B", mcu: "E0" }
+      },
+      {
+        number: 5,
+        dioA: { fn: "DIO_A", mcu: "E8", caps: ["UART7 TX"] },
+        powA: { fn: "POW_A", mcu: "B7" },
+        dioB: { fn: "DIO_B", mcu: "E7", caps: ["UART7 RX"] },
+        center: { fn: "DIO_C", mcu: "E9" },
+        powB: { fn: "POW_B", mcu: "C1" }
+      },
+      {
+        number: 6,
+        dioA: { fn: "DIO_A", mcu: "B8", caps: ["I2C1 SCL", "CAN1 RX"] },
+        powA: { fn: "POW_A", mcu: "D6" },
+        dioB: { fn: "DIO_B", mcu: "B9", caps: ["I2C1 SDA", "CAN1 TX"] },
+        center: { fn: "DIO_C", mcu: "A5", caps: ["DAC2"] },
+        powB: { fn: "POW_B", mcu: "D7" }
+      },
+      {
+        number: 7,
+        dioA: { fn: "DIO_A", mcu: "B5", caps: ["SPI3 MOSI"] },
+        powA: { fn: "POW_A", mcu: "D14" },
+        dioB: { fn: "DIO_B", mcu: "B4", caps: ["SPI3 MISO"] },
+        center: { fn: "DIO_C", mcu: "B3", caps: ["SPI3 SCK"] },
+        powB: { fn: "POW_B", mcu: "D15" }
+      },
+      {
+        number: 8,
+        dioA: { fn: "DIO_A", mcu: "E14", caps: ["SPI4 MOSI"] },
+        powA: { fn: "POW_A", mcu: "D9" },
+        dioB: { fn: "DIO_B", mcu: "E13", caps: ["SPI4 MISO"] },
+        center: { fn: "DIO_C", mcu: "E12", caps: ["SPI4 SCK"] },
+        powB: { fn: "POW_B", mcu: "D10" }
+      },
+      {
+        number: 9,
+        dioA: { fn: "DIO_A", mcu: "A9", caps: ["UART1 TX"] },
+        powA: { fn: "POW_A", mcu: "B15" },
+        dioB: { fn: "DIO_B", mcu: "A10", caps: ["UART1 RX"] },
+        center: { fn: "DIO_C", mcu: "A6" },
+        powB: { fn: "POW_B", mcu: "D8" }
+      },
+      {
+        number: 10,
+        dioA: { fn: "DIO_A", mcu: "A2", caps: ["UART2 TX"] },
+        powA: { fn: "POW_A", mcu: "E10" },
+        dioB: { fn: "DIO_B", mcu: "A3", caps: ["UART2 RX"] },
+        center: { fn: "DIO_C", mcu: "D1" },
+        powB: { fn: "POW_B", mcu: "E15" }
+      }
+    ];
+
+    const tableBody = document.querySelector("#table-body");
+    const mobileList = document.querySelector("#mobile-list");
+    const emptyState = document.querySelector("#empty");
+    const searchInput = document.querySelector("#search");
+    const filterButtons = [...document.querySelectorAll(".filter")];
+    let activeFilter = "all";
+
+    function capabilityHTML(cell) {
+      if (!cell.caps?.length) return "";
+      return `<div class="capabilities">${cell.caps.map(cap =>
+        `<span class="capability">${cap}</span>`
+      ).join("")}</div>`;
+    }
+
+    function cellHTML(cell, mobilePin = null) {
+      const type = cell.fn.startsWith("POW") ? "power" : "dio";
+      return `
+        ${mobilePin === null ? "" : `<span class="rj45">RJ45 pin ${mobilePin}</span>`}
+        <div class="cell-top">
+          <span class="function ${type}">${cell.fn}</span>
+          <span class="mcu">${cell.mcu}</span>
+        </div>
+        ${capabilityHTML(cell)}
+      `;
+    }
+
+    function searchableText(port) {
+      return [
+        `port ${port.number}`,
+        ...slots.flatMap(({ key, pin }) => {
+          const cell = port[key];
+          return [cell.fn, cell.mcu, `RJ45 pin ${pin}`, ...(cell.caps ?? [])];
+        })
+      ].join(" ").toLowerCase();
+    }
+
+    function matches(port) {
+      const term = searchInput.value.trim().toLowerCase();
+      const text = searchableText(port);
+      return (!term || text.includes(term)) &&
+        (activeFilter === "all" || text.includes(activeFilter.toLowerCase()));
+    }
+
+    function render() {
+      const visible = ports.filter(matches);
+
+      tableBody.innerHTML = visible.map(port => `
+        <tr>
+          <th scope="row"><span class="port-label">Port</span><span class="port-number">${port.number}</span></th>
+          ${slots.map(({ key }) => `<td>${cellHTML(port[key])}</td>`).join("")}
+        </tr>
+      `).join("");
+
+      mobileList.innerHTML = visible.map(port => `
+        <article class="port-card">
+          <header><h2>Port ${port.number}</h2><code>RJ45</code></header>
+          <div class="mobile-slots">
+            ${slots.map(({ key, pin }) => `<div class="mobile-slot">${cellHTML(port[key], pin)}</div>`).join("")}
+          </div>
+        </article>
+      `).join("");
+
+      emptyState.hidden = visible.length !== 0;
+    }
+
+    searchInput.addEventListener("input", render);
+    filterButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        activeFilter = button.dataset.filter;
+        filterButtons.forEach(item => item.setAttribute("aria-pressed", String(item === button)));
+        render();
+      });
+    });
+
+    render();
+  </script>
+</body>
+</html>

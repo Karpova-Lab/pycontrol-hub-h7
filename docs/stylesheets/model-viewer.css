@@ -1,0 +1,40 @@
+.md-typeset .h7-model-controls .md-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45em;
+  line-height: 1.25;
+}
+
+.md-typeset .h7-model-controls .md-button svg {
+  display: block;
+  flex: 0 0 1.2em;
+  width: 1.2em;
+  height: 1.2em;
+  margin: 0;
+}
+
+.md-typeset .h7-model-controls [data-model-reset] {
+  color: #fff;
+  background-color: #315bd6;
+  border-color: #315bd6;
+}
+
+.md-typeset .h7-model-controls [data-model-reset]:hover:not(:disabled) {
+  background-color: #2447af;
+  border-color: #2447af;
+}
+
+.md-typeset .h7-model-controls .md-button:focus-visible {
+  outline: 2px solid var(--md-accent-fg-color, #315bd6);
+  outline-offset: 3px;
+}
+
+.md-typeset .h7-model-controls .md-button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.md-typeset .h7-model-controls .md-button[hidden] {
+  display: none;
+}
