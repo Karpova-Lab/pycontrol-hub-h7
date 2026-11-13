@@ -26,11 +26,9 @@ Release the user button to enter the mode.
 | 🟡 Yellow | Safe mode | Skips `boot.py` and `main.py`. The filesystem still mounts and you get a REPL.  It only applies to that one boot; the next reset, even a soft reset (Ctrl-D), boots normally. |
 | 🟢 Green | Normal | Runs `boot.py` then `main.py`, the same as a plain reset. |
 
-## Loading MicroPython
-- Put the board in the off position
-- Connect the breakout to power and USB,
-- Press and hold the DFU button and switch the board on. You can release the DFU button once the board is on.
-- The DFU device will appear in the flasher 
-- Select the device and click flash
+<!-- ## Loading MicroPython
+- Unplug the hub
+- Press and hold the DFU button
+- Plug in USB C then release the DFU button
 
-[:material-file-download: Device file](using/hub_h743.py){ .md-button .md-button--primary }
+[:material-file-download: Device file](using/hub_h743.py){ .md-button .md-button--primary } -->

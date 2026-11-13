@@ -26,3 +26,18 @@ A pyControl breakout board using an [STM32H743VIT6](https://www.digikey.com/shor
 ![pin mapping](zensical/using/pin_mappings.png)
 ![peripherals_front](zensical/using/peripherals_front.png)
 ![peripherals_front](zensical/using/peripherals_back.png)
+
+## Building the documentation
+The documentation source is in [`zensical/`](zensical) and is built with [Zensical](https://zensical.org) into [`docs/`](docs), which is served by GitHub Pages.
+
+
+To edit/build the docs yourself:
+
+- Install [uv](https://docs.astral.sh/uv/getting-started/installation/):
+
+- From the project root run
+```sh
+uv run zensical serve
+```
+
+uv installs the pinned Python version and dependencies automatically the first time you run the command

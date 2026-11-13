@@ -1,3 +1,9 @@
 pcb/h7_breakout-backups
 pcb/h7_breakout.kicad_prl
 pcb/fp-info-cache
+discussion/
+*.bak
+pcb/~*.lck
+pcb/_autosave-*
+pcb/*-unsaved-export-*.kicad_prl
+pcb/.history/
