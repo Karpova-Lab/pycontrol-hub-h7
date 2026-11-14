@@ -1,4 +1,4 @@
 (sym_lib_table
   (version 7)
-  (lib (name "asl_symbols_new")(type "KiCad")(uri "/Users/lustiga/HHMI Dropbox/Andy Lustig/Code/karpova_lab/pyControl/Hardware Modules/h7_breakout/pcb/libs/asl_symbols_new.kicad_sym")(options "")(descr ""))
+  (lib (name "asl_symbols_new")(type "KiCad")(uri "${KIPRJMOD}/libs/asl_symbols_new.kicad_sym")(options "")(descr ""))
 )
