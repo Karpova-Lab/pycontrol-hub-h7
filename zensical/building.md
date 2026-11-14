@@ -114,7 +114,7 @@ icon: lucide/drill
 
 ## Case
 
-Parts are designed in [SolidCraft](https://solidcraft.io/), a free and open-source 3D modeling software.
+Parts are designed in [SolidCraft](https://solidcraft.io/), a free and open-source 3D CAD software.
 
 ### Laser Cut Parts
 
