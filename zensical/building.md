@@ -43,15 +43,15 @@ icon: lucide/drill
 
 <div class="grid cards" markdown>
 
--   #### [Schematic](building/pcb/schematic.pdf){ target="_blank" rel="noopener noreferrer" }
+-   #### Schematic
     ---
     [![Schematic preview](building/pcb/schematic_thumbnail.png)](building/pcb/schematic.pdf){ target="_blank" rel="noopener noreferrer" }
 
--   #### [Interactive layout](building/pcb/viewer.html){ target="_blank" rel="noopener noreferrer" }
+-   #### Interactive layout
     ---
     [![PCB layout preview](building/pcb/layout_thumbnail.png)](building/pcb/viewer.html){ target="_blank" rel="noopener noreferrer" }
 
--   #### [Interactive BOM](building/pcb/bom.html){ target="_blank" rel="noopener noreferrer" }
+-   #### Interactive BOM
     ---
     [![Interactive BOM preview](building/pcb/ibom_thumbnail.png)](building/pcb/bom.html){ target="_blank" rel="noopener noreferrer" }
 
@@ -84,8 +84,7 @@ Parts are designed in [SolidCraft](https://solidcraft.io/), a free and open-sour
     - Three 90° bends
     - Powder coated
 
-    [:material-file-download: DXF file](building/lasercut/base.dxf){ .md-button .md-button--primary }
-    [:material-file-download: STEP file](building/lasercut/base.step){ .md-button .md-button--primary }
+    [:material-file-download: base.step](building/lasercut/base.step){ .md-button .md-button--primary }
 
 
 -   #### Lid
@@ -112,16 +111,18 @@ Parts are designed in [SolidCraft](https://solidcraft.io/), a free and open-sour
     ---
     [![](building/prints/led_standoff.png)](building/prints/led_standoff.png)
 
-    [:material-file-download: SolidCraft file](building/prints/LED_standoff.sc){ .md-button .md-button--primary }
-    [:material-file-download: STEP file](building/prints/LED_standoff.step){ .md-button .md-button--primary }
+    [:material-file-download: LED_standoff.sc](building/prints/LED_standoff.sc){ .md-button .md-button--primary }
+
+    [:material-file-download: LED_standoff.step](building/prints/LED_standoff.step){ .md-button .md-button--primary }
 
 
 -   #### Board Standoffs
     ---
     [![](building/prints/pcb_standoff.png)](building/prints/pcb_standoff.png)
 
-    [:material-file-download: SolidCraft file](building/prints/board_standoff.sc){ .md-button .md-button--primary }
-    [:material-file-download: STEP file](building/prints/board_standoff.step){ .md-button .md-button--primary }
+    [:material-file-download: board_standoff.sc](building/prints/board_standoff.sc){ .md-button .md-button--primary }
+    
+    [:material-file-download: board_standoff.step](building/prints/board_standoff.step){ .md-button .md-button--primary }
 
 
 </div>
