@@ -46,7 +46,7 @@ icon: lucide/drill
 [:material-file-download: Download gerber files](h7_breakout_0_2.zip){ .md-button } 
 [:material-cart: Order from OSH Park](){ .md-button } [:material-cart: Order from Aisler](){ .md-button }  -->
 
-[Design Files](https://github.com/Karpova-Lab/pycontrol-hub-h7/tree/main/pcb){ .md-button .md-button--primary } 
+[Design Files](https://github.com/Karpova-Lab/pycontrol-hub-h7/tree/main/ecad){ .md-button .md-button--primary }
 
 <div class="grid cards" markdown>
 
