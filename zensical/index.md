@@ -16,7 +16,7 @@ Driven by the cross-platform open-source GUI software, it is able to interface w
 ## pyControl Board Comparison
 
 
-|                                    | pyControl Breakout 1.2 | pyControl H7 Breakout 0.9 |
+|                                    | pyControl Breakout 1.2 | pyControl Hub H7 1.0      |
 |------------------------------------|------------------------|---------------------------|
 | **Dimensions**                     | 1.8 x 7.6 in           | 2.4 x 8.5 in              |
 | **Microcontroller**                | [STM32F405RG](https://www.digikey.com/short/3h0hrqrw)    | [STM32H743VIT6](https://www.digikey.com/short/4cmvhp93)    |
@@ -28,10 +28,10 @@ Driven by the cross-platform open-source GUI software, it is able to interface w
 | RJ45 Behavior Ports                | 6                      | 10                        |
 | BNC Connectors                     | 4                      | 2                         |
 | I^2^C ([Qwiic](https://www.sparkfun.com/qwiic)/[STEMMA QT](https://learn.adafruit.com/introducing-adafruit-stemma-qt/what-is-stemma-qt)/[Modulino](https://store.arduino.cc/collections/modulino))    | -                      | 1                          |
-| Auxiliary Connector                | -                      | 8pos terminal [block](https://www.digikey.com/short/75fdf5t5) and [plug](https://www.digikey.com/short/5q11274z)                        |
+| Auxiliary Connector                | -                      | 8-position terminal [block](https://www.digikey.com/short/75fdf5t5) and [plug](https://www.digikey.com/short/5q11274z)                        |
 | **Interfaces**                     |                        |                           |
 | User Buttons                       | 1                      | 4                         |
-| Indicator LEDs                     | 4 color, 10 LED light bar  | 4 color                   |
+| Indicator LEDs                     | 4-color, 10-LED light bar  | 4-color                   |
 | **Input / Output**                 |                        |                           |
 | Power Driver Pins                  | 14                     | 24                        |
 | Digital I/O Pins                   | 15                     | 33                        |

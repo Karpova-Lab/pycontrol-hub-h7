@@ -41,6 +41,11 @@ icon: lucide/drill
 
 [![rendered top view of PCB](building/pcb/render.png)](building/pcb/render.png){ target="_blank" }
 
+[:material-file-download: Download gerber files](building/pcb/h7_breakout_1_0.zip){ .md-button .md-button--primary}
+<!-- [:material-cart: Order from OSH Park](https://oshpark.com/shared_projects/XvpevodX){ .md-button .md-button--primary}  -->
+
+
+
 <div class="grid cards" markdown>
 
 -   #### Schematic
@@ -87,13 +92,15 @@ Parts are designed in [SolidCraft](https://solidcraft.io/), a free and open-sour
     [:material-file-download: base.step](building/lasercut/base.step){ .md-button .md-button--primary }
 
 
--   #### Lid
+-   #### Top
     ---
-    [![](building/lasercut/lid.png)](building/lasercut/lid.png)
+    [![](building/lasercut/top.png)](building/lasercut/top.png)
 
     - Material: 304 Stainless Steel
     - Thickness: 0.048"
     - Powder coated
+
+    [:material-file-download: top.step](building/lasercut/top.step){ .md-button .md-button--primary }
 
 -   #### Front
     ---
@@ -101,6 +108,9 @@ Parts are designed in [SolidCraft](https://solidcraft.io/), a free and open-sour
 
     - Material: [Cast Acrylic](https://www.mcmaster.com/8505K741/)
     - Thickness: 0.125"
+
+    [:material-file-download: front.svg](building/lasercut/front.svg){ .md-button .md-button--primary }
+
 </div>
 ### 3D Prints
 
