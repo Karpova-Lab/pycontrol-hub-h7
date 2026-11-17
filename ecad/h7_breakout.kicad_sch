@@ -11234,7 +11234,6 @@
 		(effects
 			(font
 				(size 4 4)
-				(thickness 0.254)
 				(bold yes)
 			)
 		)
@@ -11246,7 +11245,6 @@
 		(effects
 			(font
 				(size 4 4)
-				(thickness 0.254)
 				(bold yes)
 			)
 		)
@@ -11271,7 +11269,6 @@
 		(effects
 			(font
 				(size 4 4)
-				(thickness 0.254)
 				(bold yes)
 			)
 		)
@@ -11369,7 +11366,6 @@
 		(effects
 			(font
 				(size 4 4)
-				(thickness 0.254)
 				(bold yes)
 			)
 		)
@@ -11415,7 +11411,6 @@
 		(effects
 			(font
 				(size 4 4)
-				(thickness 0.254)
 				(bold yes)
 			)
 		)
@@ -11451,7 +11446,6 @@
 		(effects
 			(font
 				(size 4 4)
-				(thickness 0.254)
 				(bold yes)
 			)
 		)
@@ -11483,7 +11477,6 @@
 		(effects
 			(font
 				(size 4 4)
-				(thickness 0.254)
 				(bold yes)
 			)
 		)
@@ -11717,7 +11710,6 @@
 		(effects
 			(font
 				(size 4 4)
-				(thickness 0.254)
 				(bold yes)
 			)
 		)
@@ -11743,7 +11735,6 @@
 		(effects
 			(font
 				(size 4 4)
-				(thickness 0.254)
 				(bold yes)
 			)
 		)
@@ -11815,7 +11806,6 @@
 		(effects
 			(font
 				(size 4 4)
-				(thickness 0.254)
 				(bold yes)
 			)
 		)

@@ -22,7 +22,7 @@ A pyControl breakout board using an [STM32H743VIT6](https://www.digikey.com/shor
 ![back](zensical/index/back.png)
 ![bottoms](zensical/index/bottom.png)
 ![top render](zensical/index/top_rendering.png)
-![layout](zensical/building/pcb/layout.png)
+[Interactive PCB layout](https://karpova-lab.github.io/pycontrol-hub-h7/building/pcb/viewer.html)
 ![schematic](zensical/building/pcb/schematic.png)
 ![pin mapping](zensical/using/pin_mappings.png)
 ![peripherals_front](zensical/using/peripherals_front.png)

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interactive layout — pyControl Hub H7</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      font: 15px/1.5 system-ui, sans-serif;
+      color: #172b2a;
+      background: #f5f8f8;
+    }
+    :focus-visible { outline: 3px solid #f5a623; outline-offset: 3px; }
+    a { color: #00695c; }
+    main { flex: 1; min-height: 0; position: relative; display: flex; }
+    kicanvas-embed { display: flex; width: 100%; height: 100%; aspect-ratio: auto; background: #f5f8f8; }
+    main[aria-busy="true"] kicanvas-embed { visibility: hidden; }
+    #status {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      margin: 0;
+      padding: 24px;
+      background: #f5f8f8;
+      text-align: center;
+    }
+    #status[hidden] { display: none; }
+    #status p { margin: 0.5rem 0; }
+  </style>
+</head>
+<body>
+  <main aria-busy="false">
+    <div id="status" role="status">
+      <div>
+        <p id="status-message">Enable JavaScript to use the interactive layout.</p>
+        <p><a href="../">Return to the Building guide</a> or <a href="h7_breakout.kicad_pcb" download>download the PCB</a>.</p>
+      </div>
+    </div>
+    <template id="design">
+      <kicanvas-embed controls="full" controlslist="nooverlay nodownload" theme="kicad" aria-label="Interactive layout viewer">
+        <kicanvas-source name="h7_breakout.kicad_pcb" type="board"></kicanvas-source>
+      </kicanvas-embed>
+    </template>
+  </main>
+  <script type="module">
+    const status = document.querySelector("#status");
+    const message = document.querySelector("#status-message");
+    const main = document.querySelector("main");
+    main.setAttribute("aria-busy", "true");
+    message.textContent = "Loading interactive layout…";
+    let failed = false;
+    const timeout = setTimeout(() => showError(new Error("Loading timed out")), 60000);
+
+    function stopLoading() {
+      clearTimeout(timeout);
+      window.removeEventListener("unhandledrejection", onLoadError);
+      main.setAttribute("aria-busy", "false");
+    }
+
+    function showError(error) {
+      if (failed) return;
+      failed = true;
+      stopLoading();
+      status.hidden = false;
+      message.textContent = "The viewer could not load. Reload to try again, or download the PCB to open in KiCad.";
+      document.querySelector("kicanvas-embed")?.remove();
+      console.error("Unable to load the design viewer", error);
+    }
+
+    // KiCanvas loads files asynchronously outside the module's import promise.
+    function onLoadError(event) { showError(event.reason); }
+    window.addEventListener("unhandledrejection", onLoadError);
+
+    try {
+      // The current embed does not forward theme to its internal viewers.
+      // Set the preference before the KiCanvas module initializes it.
+      try {
+        localStorage.setItem("kc:prefs:theme", JSON.stringify({ val: "kicad" }));
+      } catch (error) {
+        console.warn("Theme preference could not be saved", error);
+      }
+      const [, { kicanvasBoard }, response] = await Promise.all([
+        import("https://kicanvas.org/kicanvas/kicanvas.js"),
+        import("./kicad-compat.mjs"),
+        fetch("h7_breakout.kicad_pcb", { cache: "no-cache" }),
+      ]);
+      if (!response.ok) throw new Error(`PCB request failed: ${response.status}`);
+      const board = kicanvasBoard(await response.text());
+      if (failed) throw new Error("Viewer load was cancelled");
+      const content = document.querySelector("#design").content.cloneNode(true);
+      content.querySelector('kicanvas-source[type="board"]').textContent = board;
+      const viewer = content.querySelector("kicanvas-embed");
+      main.append(content);
+      const project = await viewer.requestContext("project");
+
+      async function setInitialBoardAppearance(boardApp) {
+        const visibleLayers = new Set(["F.Cu", "In1.Cu", "In2.Cu", "B.Cu", "F.SilkS"]);
+        for (const layer of boardApp.viewer.layers.in_ui_order()) {
+          layer.visible = visibleLayers.has(layer.name);
+        }
+        boardApp.viewer.zone_opacity = 0.25;
+        boardApp.viewer.page_opacity = 0;
+        const layers = boardApp.shadowRoot.querySelector("kc-board-layers-panel");
+        await layers.updateComplete;
+        layers.update_item_states();
+        // On narrow screens leave the panel closed to give the board room.
+        if (matchMedia("(min-width: 800px)").matches) boardApp.change_activity("layers");
+        // Keep the Objects panel slider consistent with the rendered zones.
+        const objects = boardApp.shadowRoot.querySelector("kc-board-objects-panel");
+        await objects.updateComplete;
+        const zones = objects.shadowRoot.querySelector('kc-ui-range[name="zones"]');
+        if (zones) zones.value = "0.25";
+        const page = objects.shadowRoot.querySelector('kc-ui-range[name="page"]');
+        if (page) page.value = "0";
+        // Fit the PCB itself, rather than its drawing sheet or off-board text.
+        await new Promise(requestAnimationFrame);
+        boardApp.viewer.zoom_to_board();
+      }
+
+      project.addEventListener("change", async () => {
+        try {
+          const boardApp = viewer.shadowRoot.querySelector("kc-board-app");
+          if (!boardApp) throw new Error("No board was loaded");
+          await boardApp.viewerReady;
+          await boardApp.viewer.loaded;
+          // Apply once so subsequent layer and slider adjustments are preserved.
+          await setInitialBoardAppearance(boardApp).catch(error => console.warn("Unable to set initial board appearance", error));
+          // Preserve layout while loading, then reveal the rendered board.
+          await new Promise(requestAnimationFrame);
+          if (!viewer.isConnected) return;
+          stopLoading();
+          status.hidden = true;
+        } catch (error) {
+          showError(error);
+        }
+      }, { once: true });
+    } catch (error) {
+      showError(error);
+    }
+  </script>
+</body>
+</html>

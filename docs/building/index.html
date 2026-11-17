@@ -356,10 +356,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#layout" class="md-nav__link">
+  <a href="#interactive-layout" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Layout
+        Interactive layout
       </span>
     </span>
   </a>
@@ -371,17 +371,6 @@
     <span class="md-ellipsis">
       <span class="md-typeset">
         Interactive BOM
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bill-of-materials" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Bill of Materials
       </span>
     </span>
   </a>
@@ -610,10 +599,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#layout" class="md-nav__link">
+  <a href="#interactive-layout" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Layout
+        Interactive layout
       </span>
     </span>
   </a>
@@ -625,17 +614,6 @@
     <span class="md-ellipsis">
       <span class="md-typeset">
         Interactive BOM
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bill-of-materials" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Bill of Materials
       </span>
     </span>
   </a>
@@ -825,268 +803,34 @@
     <button type="button" class="md-button" data-model-reset aria-controls="h7-board-model" hidden disabled><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11a9 9 0 1 1 2.6 7.1"></path><path d="M3 3v8h8"></path></svg>Reset</button>
   </div>
 </div>
+
 <h2 id="printed-circuit-board">Printed Circuit Board<a class="headerlink" href="#printed-circuit-board" title="Permanent link">&para;</a></h2>
 <p><a href="../building/pcb/render.png" target="_blank"><img alt="rendered top view of PCB" src="../building/pcb/render.png" /></a></p>
-<!-- !!! tip "Ordering PCBs"
-    Order the PCB from [OSH Park](https://oshpark.com/) or [Aisler](https://aisler.net/), or manually upload the gerber files to your preferred PCB manufacturer.
-
-[:material-file-download: Download gerber files](h7_breakout_0_2.zip){ .md-button } 
-[:material-cart: Order from OSH Park](){ .md-button } [:material-cart: Order from Aisler](){ .md-button }  -->
-
-<p><a class="md-button md-button--primary" href="https://github.com/Karpova-Lab/pycontrol-hub-h7/tree/main/ecad">Design Files</a> </p>
 <div class="grid cards">
 <ul>
 <li>
-<h4 id="schematic">Schematic<a class="headerlink" href="#schematic" title="Permanent link">&para;</a></h4>
+<h4 id="schematic"><a href="../building/pcb/schematic.pdf" rel="noopener noreferrer" target="_blank">Schematic</a><a class="headerlink" href="#schematic" title="Permanent link">&para;</a></h4>
 <hr />
-<p><a href="../building/pcb/schematic.pdf"><img alt="" src="../building/pcb/schematic_thumbnail.png" /></a></p>
+<p><a href="../building/pcb/schematic.pdf" rel="noopener noreferrer" target="_blank"><img alt="Schematic preview" src="../building/pcb/schematic_thumbnail.png" /></a></p>
 </li>
 <li>
-<h4 id="layout">Layout<a class="headerlink" href="#layout" title="Permanent link">&para;</a></h4>
+<h4 id="interactive-layout"><a href="../building/pcb/viewer.html" rel="noopener noreferrer" target="_blank">Interactive layout</a><a class="headerlink" href="#interactive-layout" title="Permanent link">&para;</a></h4>
 <hr />
-<p><a href="../building/pcb/layout.png"><img alt="" src="../building/pcb/layout_thumbnail.png" /></a></p>
+<p><a href="../building/pcb/viewer.html" rel="noopener noreferrer" target="_blank"><img alt="PCB layout preview" src="../building/pcb/layout_thumbnail.png" /></a></p>
 </li>
 <li>
-<h4 id="interactive-bom">Interactive BOM<a class="headerlink" href="#interactive-bom" title="Permanent link">&para;</a></h4>
+<h4 id="interactive-bom"><a href="../building/pcb/bom.html" rel="noopener noreferrer" target="_blank">Interactive BOM</a><a class="headerlink" href="#interactive-bom" title="Permanent link">&para;</a></h4>
 <hr />
-<p><a href="../building/pcb/bom.html"><img alt="" src="../building/pcb/ibom_thumbnail.png" /></a></p>
+<p><a href="../building/pcb/bom.html" rel="noopener noreferrer" target="_blank"><img alt="Interactive BOM preview" src="../building/pcb/ibom_thumbnail.png" /></a></p>
 </li>
 </ul>
 </div>
-<h4 id="bill-of-materials">Bill of Materials<a class="headerlink" href="#bill-of-materials" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th>Quantity</th>
-<th>Reference</th>
-<th>Description</th>
-<th>Value/MPN</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>3</td>
-<td>C1, C4, C5</td>
-<td>Capacitor</td>
-<td><a href="https://www.digikey.com/short/009ht409">10 µF</a></td>
-</tr>
-<tr>
-<td>1</td>
-<td>C2</td>
-<td>Polarized capacitor</td>
-<td><a href="https://www.digikey.com/short/bffd43c7">22µF</a></td>
-</tr>
-<tr>
-<td>9</td>
-<td>C3, C6-C10, C12, C15, C16</td>
-<td>Capacitor</td>
-<td><a href="https://www.digikey.com/short/5p4pr232">100 nF</a></td>
-</tr>
-<tr>
-<td>4</td>
-<td>C11, C14, C19, C20</td>
-<td>Capacitor</td>
-<td><a href="https://www.digikey.com/short/r5rtb29t">10 pF</a></td>
-</tr>
-<tr>
-<td>3</td>
-<td>C13, C17, C18</td>
-<td>Capacitor</td>
-<td><a href="https://www.digikey.com/short/hhzmbpr7">2.2 µF</a></td>
-</tr>
-<tr>
-<td>1</td>
-<td>C21</td>
-<td>Polarized capacitor</td>
-<td><a href="https://www.digikey.com/short/jrvhvtm2">100µF</a></td>
-</tr>
-<tr>
-<td>3</td>
-<td>D1, D2, D4</td>
-<td>Red LED</td>
-<td><a href="https://www.digikey.com/short/072zff2q">151031SS06000</a></td>
-</tr>
-<tr>
-<td>1</td>
-<td>D3</td>
-<td>Green LED</td>
-<td><a href="https://www.digikey.com/short/vb0zvrd4">151031VS06000</a></td>
-</tr>
-<tr>
-<td>1</td>
-<td>D5</td>
-<td>Blue LED</td>
-<td><a href="https://www.digikey.com/short/zw3jz18m">151033BS03000</a></td>
-</tr>
-<tr>
-<td>1</td>
-<td>D6</td>
-<td>Yellow LED</td>
-<td><a href="https://www.digikey.com/short/nmrftz94">151031YS05900</a></td>
-</tr>
-<tr>
-<td>1</td>
-<td>D8</td>
-<td>Schottky diode</td>
-<td><a href="https://www.digikey.com/short/8cz3zv3c">SMBJ15A</a></td>
-</tr>
-<tr>
-<td>2</td>
-<td>DRA1, DRA2</td>
-<td>DIN rail adapter</td>
-<td><a href="https://www.digikey.com/short/dc54tmvm">1201578</a></td>
-</tr>
-<tr>
-<td>2</td>
-<td>H1, H3</td>
-<td>13mm threaded standoff</td>
-<td><a href="https://www.digikey.com/short/wz993m9t">9774130360R</a></td>
-</tr>
-<tr>
-<td>2</td>
-<td>H2, H4</td>
-<td>RA screw mount</td>
-<td><a href="https://www.digikey.com/short/n4b5wqj7">7790</a></td>
-</tr>
-<tr>
-<td>1</td>
-<td>J1</td>
-<td>DC barrel jack</td>
-<td><a href="https://www.digikey.com/short/bdvdrmh9">PJ-037AH</a></td>
-</tr>
-<tr>
-<td>2</td>
-<td>J2, J3</td>
-<td>BNC connector</td>
-<td><a href="https://www.digikey.com/short/2nj4fch8">0731000154</a></td>
-</tr>
-<tr>
-<td>1</td>
-<td>J4</td>
-<td>USB Type C connector</td>
-<td><a href="https://www.digikey.com/short/qprqqhnb">USB4105-GF-A</a></td>
-</tr>
-<tr>
-<td>1</td>
-<td>J5</td>
-<td>Qwiic connector</td>
-<td><a href="https://www.digikey.com/short/m03n5v7m">SM04B-SRSS-TB</a></td>
-</tr>
-<tr>
-<td>1</td>
-<td>J6</td>
-<td>8pos Terminal Block</td>
-<td><a href="https://www.digikey.com/short/75fdf5t5">1803332</a></td>
-</tr>
-<tr>
-<td>10</td>
-<td>J7-J16</td>
-<td>RJ45 socket</td>
-<td><a href="https://www.digikey.com/short/wvt4z0f9">E5J88-00LJG2-L</a></td>
-</tr>
-<tr>
-<td>1</td>
-<td>Q1</td>
-<td>40V 3A P-Channel MOSFET</td>
-<td><a href="https://www.digikey.com/short/d57vqp75">DMP4015SK3-13</a></td>
-</tr>
-<tr>
-<td>20</td>
-<td>R1, R2, R4, R5, R10, R16-R19, R24, R26, R33, R38, R41, R44-R46, R54, R56, R57</td>
-<td>Resistor</td>
-<td><a href="https://www.digikey.com/short/7h887f3j">5.1 KΩ</a></td>
-</tr>
-<tr>
-<td>2</td>
-<td>R3, R34</td>
-<td>Resistor</td>
-<td><a href="https://www.digikey.com/short/082hjmh2">20 KΩ</a></td>
-</tr>
-<tr>
-<td>39</td>
-<td>R6-R9, R11-R15, R20-R23, R25, R27-R32, R35-R37, R39, R40, R42, R43, R47-R53, R55, R58-R61</td>
-<td>Resistor</td>
-<td><a href="https://www.digikey.com/short/w08p4cq4">33 Ω</a></td>
-</tr>
-<tr>
-<td>4</td>
-<td>S1-S4</td>
-<td>12mm tactile switch</td>
-<td><a href="https://www.digikey.com/short/5zrnb72h">TS02-66-170-BK-260-LCR-D</a></td>
-</tr>
-<tr>
-<td>1</td>
-<td>SW1</td>
-<td>Toggle switch</td>
-<td><a href="https://www.digikey.com/short/4rpfjf9f">100SP1T2B4M6QE</a></td>
-</tr>
-<tr>
-<td>2</td>
-<td>SW2, SW3</td>
-<td>RA tactile switch</td>
-<td><a href="https://www.digikey.com/short/bnb210zd">PTS645VL58-2 LFS</a></td>
-</tr>
-<tr>
-<td>1</td>
-<td>U1</td>
-<td>DC DC Converter</td>
-<td><a href="https://www.digikey.com/short/tn7nv799">TSR 3-2450N</a></td>
-</tr>
-<tr>
-<td>1</td>
-<td>U2</td>
-<td>LDO regulator</td>
-<td><a href="https://www.digikey.com/short/22980jpq">AMS1117-3.3</a></td>
-</tr>
-<tr>
-<td>1</td>
-<td>U3</td>
-<td>ESD protection</td>
-<td><a href="https://www.digikey.com/short/jmvr771q">USBLC6-2SC6</a></td>
-</tr>
-<tr>
-<td>1</td>
-<td>U4</td>
-<td>Microcontroller</td>
-<td><a href="https://www.digikey.com/short/8nncrv0f">STM32H743VIT6</a></td>
-</tr>
-<tr>
-<td>1</td>
-<td>U5</td>
-<td>Quad SPI Flash Memory</td>
-<td><a href="https://www.digikey.com/short/tn9w3j0r">W25Q256JVEIQ</a></td>
-</tr>
-<tr>
-<td>3</td>
-<td>U7-U9</td>
-<td>Transistor array</td>
-<td><a href="https://www.digikey.com/short/qmnr87cv">TBD62083AFNG,EL</a></td>
-</tr>
-<tr>
-<td>11</td>
-<td>U10-U20</td>
-<td>ESD protection</td>
-<td><a href="https://www.digikey.com/short/tt7h290t">SRV05-4</a></td>
-</tr>
-<tr>
-<td>1</td>
-<td>Y1</td>
-<td>Four pin crystal</td>
-<td><a href="https://www.digikey.com/short/0rwmh0m7">25 MHz</a></td>
-</tr>
-<tr>
-<td>1</td>
-<td>Y2</td>
-<td>Two pin crystal</td>
-<td><a href="https://www.digikey.com/short/pbpt20pn">32.768 kHz</a></td>
-</tr>
-</tbody>
-</table>
 <div class="admonition warning">
-<p class="admonition-title">Flash availability</p>
-<p>There is a memory shortage right now, so availability can be suspect.
-This PCB design includes both <strong>8-WSON (8x6)</strong> and <strong>8-SOIC</strong> footprints to accommodate multiple packages of <strong>Winbond Quad SPI Flash Memory</strong> operating at <strong>3.3V</strong>.
+<p class="admonition-title">Sourcing Parts</p>
+<p>Both the flash memory and the microcontroller can sometimes be hard to source.</p>
+<p>For the memory, the PCB design includes both <strong>8-WSON (8x6)</strong> and <strong>8-SOIC</strong> footprints to accommodate multiple packages of <strong>Winbond Quad SPI Flash Memory</strong> operating at <strong>3.3V</strong>.
 Here is a <a href="https://www.digikey.com/short/2bhr1z4p">Digi-Key search for parts that match the requirements</a></p>
+<p>For the microcontroller, either <a href="https://www.digikey.com/short/dqfq9h4t">STM32H743VIT6TR</a> or <a href="https://www.digikey.com/short/84rvf05r">STM32H743VGT6</a> will work with the firmware.</p>
 </div>
 <h2 id="case">Case<a class="headerlink" href="#case" title="Permanent link">&para;</a></h2>
 <p>Parts are designed in <a href="https://solidcraft.io/">SolidCraft</a>, a free and open-source 3D CAD software.</p>
@@ -1104,7 +848,7 @@ Here is a <a href="https://www.digikey.com/short/2bhr1z4p">Digi-Key search for p
 <li>Powder coated</li>
 </ul>
 <p><a class="md-button md-button--primary" href="../building/lasercut/base.dxf"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6c-1.11 0-2 .89-2 2v16c0 1.11.89 2 2 2h12c1.11 0 2-.89 2-2V8zm-2 17-4-4h2.5v-3h3v3H16zm1-10V3.5L18.5 9z"/></svg></span> DXF file</a>
-<a class="md-button md-button--primary" href="../building/lasercut/base.dxf"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6c-1.11 0-2 .89-2 2v16c0 1.11.89 2 2 2h12c1.11 0 2-.89 2-2V8zm-2 17-4-4h2.5v-3h3v3H16zm1-10V3.5L18.5 9z"/></svg></span> STEP file</a></p>
+<a class="md-button md-button--primary" href="../building/lasercut/base.step"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6c-1.11 0-2 .89-2 2v16c0 1.11.89 2 2 2h12c1.11 0 2-.89 2-2V8zm-2 17-4-4h2.5v-3h3v3H16zm1-10V3.5L18.5 9z"/></svg></span> STEP file</a></p>
 </li>
 <li>
 <h4 id="lid">Lid<a class="headerlink" href="#lid" title="Permanent link">&para;</a></h4>
@@ -1134,8 +878,8 @@ Here is a <a href="https://www.digikey.com/short/2bhr1z4p">Digi-Key search for p
 <h4 id="led-standoffs">LED Standoffs<a class="headerlink" href="#led-standoffs" title="Permanent link">&para;</a></h4>
 <hr />
 <p><a href="../building/prints/led_standoff.png"><img alt="" src="../building/prints/led_standoff.png" /></a></p>
-<p><a class="md-button md-button--primary" href="../building/prints/led_standoff.sc"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6c-1.11 0-2 .89-2 2v16c0 1.11.89 2 2 2h12c1.11 0 2-.89 2-2V8zm-2 17-4-4h2.5v-3h3v3H16zm1-10V3.5L18.5 9z"/></svg></span> SolidCraft file</a>
-<a class="md-button md-button--primary" href="../building/prints/led_standoff.step"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6c-1.11 0-2 .89-2 2v16c0 1.11.89 2 2 2h12c1.11 0 2-.89 2-2V8zm-2 17-4-4h2.5v-3h3v3H16zm1-10V3.5L18.5 9z"/></svg></span> STEP file</a></p>
+<p><a class="md-button md-button--primary" href="../building/prints/LED_standoff.sc"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6c-1.11 0-2 .89-2 2v16c0 1.11.89 2 2 2h12c1.11 0 2-.89 2-2V8zm-2 17-4-4h2.5v-3h3v3H16zm1-10V3.5L18.5 9z"/></svg></span> SolidCraft file</a>
+<a class="md-button md-button--primary" href="../building/prints/LED_standoff.step"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6c-1.11 0-2 .89-2 2v16c0 1.11.89 2 2 2h12c1.11 0 2-.89 2-2V8zm-2 17-4-4h2.5v-3h3v3H16zm1-10V3.5L18.5 9z"/></svg></span> STEP file</a></p>
 </li>
 <li>
 <h4 id="board-standoffs">Board Standoffs<a class="headerlink" href="#board-standoffs" title="Permanent link">&para;</a></h4>
