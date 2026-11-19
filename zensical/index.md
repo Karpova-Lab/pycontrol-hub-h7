@@ -43,11 +43,17 @@ Driven by the cross-platform open-source GUI software, it is able to interface w
 
 ### Performance
 
-The goal is to keep latency below the 1ms timestamp resolution of the pyControl framework. 
-The high load setup is an extreme condition, where the M4 processor on the pyControl Breakout 1.2 began showing some limitations. 
-The H7 Breakout 0.9 performs great in all conditions.
-
+Response latency, measured from an input edge to the matching output edge.[^latency-method] 
+Latencies under 1 ms are within the pyControl framework's 1 ms timestamp resolution.
 
 ![Performance](index/comparison_latency.png)
 
-The benchmarking method is described in the pyControl manuscript (see "Framework Performance" in the [results section](https://elifesciences.org/articles/67846#s2) and "Framework performance validation" in the [materials and methods section](https://elifesciences.org/articles/67846#s4)).
+| Board         | Load | Latency (mean ± SD) | Range       | < 1 ms | < 2 ms      |
+|---------------|------|---------------------|-------------|--------|-------------|
+| Breakout v1.2 | None | 540 ± 18 µs         | 500–580 µs  | 100%   | 100%        |
+| Breakout v1.2 | High | 819 ± 233 µs        | 500–5610 µs | 82%    | 99.9%      |
+| Hub H7        | None | 144 ± 6 µs          | 130–160 µs  | 100%   | 100%        |
+| Hub H7        | High | 155 ± 23 µs         | 130–310 µs  | 100%   | 100%        |
+
+
+[^latency-method]: Breakout v1.2 (STM32F405, Cortex-M4, 168 MHz) and Hub H7 (STM32H743, Cortex-M7, 480 MHz), running MicroPython 1.29.0 and pyControl 2.1.1. The task sets a digital output (BNC 2) to follow a digital input (BNC 1). An [Analog Discovery 2](https://digilent.com/shop/analog-discovery-2-100ms-s-usb-oscilloscope-logic-analyzer-and-variable-power-supply/) drove BNC 1 with a 51 Hz square wave and recorded both BNC 1 and BNC 2 at 100 kHz (10 µs resolution) for 50 s. No load: follower task only. High load: about 400 extra digital input events/s (two inputs toggled at Poisson-distributed times by a second pyControl board), plus two analog inputs sampled at 1 kHz and streamed to the computer, far heavier than a typical experiment. Garbage collection ran just after each rising edge, so it never coincided with a measured response.

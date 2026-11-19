@@ -616,11 +616,63 @@ Driven by the cross-platform open-source GUI software, it is able to interface w
 </tbody>
 </table>
 <h3 id="performance">Performance<a class="headerlink" href="#performance" title="Permanent link">&para;</a></h3>
-<p>The goal is to keep latency below the 1ms timestamp resolution of the pyControl framework. 
-The high load setup is an extreme condition, where the M4 processor on the pyControl Breakout 1.2 began showing some limitations. 
-The H7 Breakout 0.9 performs great in all conditions.</p>
+<p>Response latency, measured from an input edge to the matching output edge.<sup id="fnref:latency-method"><a class="footnote-ref" href="#fn:latency-method">1</a></sup> 
+Latencies under 1 ms are within the pyControl framework's 1 ms timestamp resolution.</p>
 <p><img alt="Performance" src="index/comparison_latency.png" /></p>
-<p>The benchmarking method is described in the pyControl manuscript (see "Framework Performance" in the <a href="https://elifesciences.org/articles/67846#s2">results section</a> and "Framework performance validation" in the <a href="https://elifesciences.org/articles/67846#s4">materials and methods section</a>).</p>
+<table>
+<thead>
+<tr>
+<th>Board</th>
+<th>Load</th>
+<th>Latency (mean ± SD)</th>
+<th>Range</th>
+<th>&lt; 1 ms</th>
+<th>&lt; 2 ms</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Breakout v1.2</td>
+<td>None</td>
+<td>540 ± 18 µs</td>
+<td>500–580 µs</td>
+<td>100%</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Breakout v1.2</td>
+<td>High</td>
+<td>819 ± 233 µs</td>
+<td>500–5610 µs</td>
+<td>82%</td>
+<td>99.9%</td>
+</tr>
+<tr>
+<td>Hub H7</td>
+<td>None</td>
+<td>144 ± 6 µs</td>
+<td>130–160 µs</td>
+<td>100%</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Hub H7</td>
+<td>High</td>
+<td>155 ± 23 µs</td>
+<td>130–310 µs</td>
+<td>100%</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:latency-method">
+<p>Breakout v1.2 (STM32F405, Cortex-M4, 168 MHz) and Hub H7 (STM32H743, Cortex-M7, 480 MHz), running MicroPython 1.29.0 and pyControl 2.1.1. The task sets a digital output (BNC 2) to follow a digital input (BNC 1). An <a href="https://digilent.com/shop/analog-discovery-2-100ms-s-usb-oscilloscope-logic-analyzer-and-variable-power-supply/">Analog Discovery 2</a> drove BNC 1 with a 51 Hz square wave and recorded both BNC 1 and BNC 2 at 100 kHz (10 µs resolution) for 50 s. No load: follower task only. High load: about 400 extra digital input events/s (two inputs toggled at Poisson-distributed times by a second pyControl board), plus two analog inputs sampled at 1 kHz and streamed to the computer, far heavier than a typical experiment. Garbage collection ran just after each rising edge, so it never coincided with a measured response.&#160;<a class="footnote-backref" href="#fnref:latency-method" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
